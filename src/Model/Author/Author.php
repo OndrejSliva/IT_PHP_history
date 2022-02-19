@@ -17,7 +17,7 @@ class Author {
 	public function __construct(
 		string $uuid,
 		string $firstName,
-		string $lastName
+		string $lastName,
 	) {
 		$this->uuid = $uuid;
 		$this->firstName = $firstName;

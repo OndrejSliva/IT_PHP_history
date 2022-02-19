@@ -21,5 +21,5 @@ $article = Article::createFromArticleData($articleData);
 var_dump($article->getName());
 var_dump($article->getAuthor()->getFullName());
 var_dump($article->getPublishedAt());
-var_dump($article->getPublishedAt() !== null ? $article->getPublishedAt()->format('d.m.Y') : null);
+var_dump($article->getPublishedAt()?->format('d.m.Y'));
 var_dump($article);

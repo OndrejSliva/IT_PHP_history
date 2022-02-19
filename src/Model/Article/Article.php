@@ -25,7 +25,7 @@ class Article {
 		string $name,
 		Author $author,
 		ArticleStateEnum $state,
-		?\DateTimeImmutable $publishedAt
+		?\DateTimeImmutable $publishedAt,
 	) {
 		$this->uuid = $uuid;
 		$this->name = $name;

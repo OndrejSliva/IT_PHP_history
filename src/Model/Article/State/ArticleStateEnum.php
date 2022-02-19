@@ -14,17 +14,14 @@ class ArticleStateEnum {
 		self::STATE_CREATED
 	];
 
-	private int $state;
-
 	public function __construct(
-		int $state
+		private int $state,
 	) {
 		if (!in_array($state, self::STATES, true)) {
 			throw new \InvalidArgumentException(
 				sprintf('State %s not exist', $state)
 			);
 		}
-		$this->state = $state;
 	}
 
 	public static function createPublishedState(): self {
