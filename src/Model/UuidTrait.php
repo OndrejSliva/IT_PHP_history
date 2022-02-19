@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VSB\IT\Model;
 
 use Ramsey\Uuid\Uuid;
@@ -11,17 +13,11 @@ trait UuidTrait {
 	 */
 	private $uuid;
 
-	/**
-	 * @return string
-	 */
-	public function getUuid() {
+	public function getUuid(): string {
 		return $this->uuid;
 	}
 
-	/**
-	 * @return string
-	 */
-	protected static function generateUuid4() {
+	protected static function generateUuid4(): string {
 		return Uuid::uuid4()->toString();
 	}
 }

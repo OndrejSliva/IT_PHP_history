@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use VSB\IT\Model\Article\Article;
 use VSB\IT\Model\Article\ArticleData;
 use VSB\IT\Model\Article\State\ArticleStateEnum;

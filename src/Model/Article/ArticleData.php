@@ -1,6 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VSB\IT\Model\Article;
+
+use VSB\IT\Model\Article\State\ArticleStateEnum;
+use VSB\IT\Model\Author\Author;
 
 class ArticleData {
 
@@ -10,12 +15,12 @@ class ArticleData {
 	private $name;
 
 	/**
-	 * @var string
+	 * @var \VSB\IT\Model\Author\Author
 	 */
 	private $author;
 
 	/**
-	 * @var string
+	 * @var \VSB\IT\Model\Article\State\ArticleStateEnum
 	 */
 	private $state;
 
@@ -25,15 +30,12 @@ class ArticleData {
 	private $publishedAt;
 
 	/**
-	 * @param string $name
-	 * @param \VSB\IT\Model\Author\Author $author
-	 * @param \VSB\IT\Model\Article\State\ArticleStateEnum $state
 	 * @param \DateTimeImmutable|null $publishedAt
 	 */
 	public function __construct(
-		$name,
-		$author,
-		$state,
+		string $name,
+		Author $author,
+		ArticleStateEnum $state,
 		$publishedAt
 	) {
 		$this->name = $name;
@@ -42,24 +44,15 @@ class ArticleData {
 		$this->publishedAt = $publishedAt;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
+	public function getName(): string {
 		return $this->name;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getAuthor() {
+	public function getAuthor(): Author {
 		return $this->author;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getState() {
+	public function getState(): ArticleStateEnum {
 		return $this->state;
 	}
 

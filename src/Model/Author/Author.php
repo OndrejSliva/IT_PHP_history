@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VSB\IT\Model\Author;
 
 use VSB\IT\Model\UuidTrait;
@@ -18,27 +20,17 @@ class Author {
 	 */
 	private $lastName;
 
-	/**
-	 * @param string $uuid
-	 * @param string $firstName
-	 * @param string $lastName
-	 */
 	public function __construct(
-		$uuid,
-		$firstName,
-		$lastName
+		string $uuid,
+		string $firstName,
+		string $lastName
 	) {
 		$this->uuid = $uuid;
 		$this->firstName = $firstName;
 		$this->lastName = $lastName;
 	}
 
-	/**
-	 * @param string $firstName
-	 * @param string $lastName
-	 * @return \VSB\IT\Model\Author\Author
-	 */
-	public static function createFromFirstNameAndLastName($firstName, $lastName) {
+	public static function createFromFirstNameAndLastName(string $firstName, string $lastName): self {
 		return new self(
 			self::generateUuid4(),
 			$firstName,
@@ -46,24 +38,15 @@ class Author {
 		);
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getFirstName() {
+	public function getFirstName(): string {
 		return $this->firstName;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getLastName() {
+	public function getLastName(): string {
 		return $this->lastName;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getFullName() {
+	public function getFullName(): string {
 		return sprintf('%s %s', $this->firstName, $this->lastName);
 	}
 }

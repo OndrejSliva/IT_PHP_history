@@ -1,7 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VSB\IT\Model\Article;
 
+use VSB\IT\Model\Article\State\ArticleStateEnum;
+use VSB\IT\Model\Author\Author;
 use VSB\IT\Model\UuidTrait;
 
 class Article {
@@ -29,17 +33,13 @@ class Article {
 	private $publishedAt;
 
 	/**
-	 * @param string $uuid
-	 * @param string $name
-	 * @param \VSB\IT\Model\Author\Author $author
-	 * @param \VSB\IT\Model\Article\State\ArticleStateEnum $state
 	 * @param \DateTimeImmutable|null $publishedAt
 	 */
 	public function __construct(
-		$uuid,
-		$name,
-		$author,
-		$state,
+		string $uuid,
+		string $name,
+		Author $author,
+		ArticleStateEnum $state,
 		$publishedAt
 	) {
 		$this->uuid = $uuid;
@@ -49,7 +49,7 @@ class Article {
 		$this->publishedAt = $publishedAt;
 	}
 
-	public static function createFromArticleData(ArticleData $articleData) {
+	public static function createFromArticleData(ArticleData $articleData): self {
 		return new self(
 			self::generateUuid4(),
 			$articleData->getName(),
@@ -59,24 +59,15 @@ class Article {
 		);
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
+	public function getName(): string {
 		return $this->name;
 	}
 
-	/**
-	 * @return \VSB\IT\Model\Author\Author
-	 */
-	public function getAuthor() {
+	public function getAuthor(): Author {
 		return $this->author;
 	}
 
-	/**
-	 * @return \VSB\IT\Model\Article\State\ArticleStateEnum
-	 */
-	public function getState() {
+	public function getState(): ArticleStateEnum {
 		return $this->state;
 	}
 

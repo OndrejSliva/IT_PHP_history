@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VSB\IT\Model\Article\State;
 
 class ArticleStateEnum {
@@ -17,11 +19,8 @@ class ArticleStateEnum {
 	 */
 	private $state;
 
-	/**
-	 * @param int $state
-	 */
 	public function __construct(
-		$state
+		int $state
 	) {
 		if (!in_array($state, self::STATES, true)) {
 			throw new \InvalidArgumentException(
@@ -31,24 +30,15 @@ class ArticleStateEnum {
 		$this->state = $state;
 	}
 
-	/**
-	 * @return \VSB\IT\Model\Article\State\ArticleStateEnum
-	 */
-	public static function createPublishedState() {
+	public static function createPublishedState(): self {
 		return new self(self::STATE_PUBLISHED);
 	}
 
-	/**
-	 * @return \VSB\IT\Model\Article\State\ArticleStateEnum
-	 */
-	public static function createCreatedState() {
+	public static function createCreatedState(): self {
 		return new self(self::STATE_CREATED);
 	}
 
-	/**
-	 * @return int
-	 */
-	public function getState() {
+	public function getState(): int {
 		return $this->state;
 	}
 }
