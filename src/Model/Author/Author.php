@@ -2,14 +2,11 @@
 
 namespace VSB\IT\Model\Author;
 
-use Ramsey\Uuid\Uuid;
+use VSB\IT\Model\UuidTrait;
 
 class Author {
 
-	/**
-	 * @var string
-	 */
-	private $uuid;
+	use UuidTrait;
 
 	/**
 	 * @var string
@@ -43,17 +40,10 @@ class Author {
 	 */
 	public static function createFromFirstNameAndLastName($firstName, $lastName) {
 		return new self(
-			Uuid::uuid4()->toString(),
+			self::generateUuid4(),
 			$firstName,
 			$lastName
 		);
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getUuid() {
-		return $this->uuid;
 	}
 
 	/**

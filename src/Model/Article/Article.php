@@ -2,14 +2,11 @@
 
 namespace VSB\IT\Model\Article;
 
-use Ramsey\Uuid\Uuid;
+use VSB\IT\Model\UuidTrait;
 
 class Article {
 
-	/**
-	 * @var string
-	 */
-	private $uuid;
+	use UuidTrait;
 
 	/**
 	 * @var string
@@ -52,25 +49,14 @@ class Article {
 		$this->publishedAt = $publishedAt;
 	}
 
-	/**
-	 * @param \VSB\IT\Model\Article\ArticleData $articleData
-	 * @return \VSB\IT\Model\Article\Article
-	 */
-	public static function createFromArticleData($articleData) {
+	public static function createFromArticleData(ArticleData $articleData) {
 		return new self(
-			Uuid::uuid4()->toString(),
+			self::generateUuid4(),
 			$articleData->getName(),
 			$articleData->getAuthor(),
 			$articleData->getState(),
 			$articleData->getPublishedAt()
 		);
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getUuid() {
-		return $this->uuid;
 	}
 
 	/**
