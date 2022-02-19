@@ -34,7 +34,7 @@ class Author {
 		return new self(
 			self::generateUuid4(),
 			$firstName,
-			$lastName
+			$lastName,
 		);
 	}
 

@@ -14,7 +14,7 @@ $articleData = new ArticleData(
 	'awesome article',
 	$author,
 	ArticleStateEnum::createCreatedState(),
-	null
+	null,
 );
 $article = Article::createFromArticleData($articleData);
 
