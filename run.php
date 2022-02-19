@@ -13,7 +13,7 @@ $author = Author::createFromFirstNameAndLastName('Ondřej', 'Slíva');
 $articleData = new ArticleData(
 	'awesome article',
 	$author,
-	ArticleStateEnum::createCreatedState(),
+	ArticleStateEnum::CREATED,
 	null,
 );
 $article = Article::createFromArticleData($articleData);

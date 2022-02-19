@@ -37,10 +37,10 @@ class Article {
 	public static function createFromArticleData(ArticleData $articleData): self {
 		return new self(
 			self::generateUuid4(),
-			$articleData->getName(),
-			$articleData->getAuthor(),
-			$articleData->getState(),
-			$articleData->getPublishedAt()
+			$articleData->name,
+			$articleData->author,
+			$articleData->state,
+			$articleData->publishedAt
 		);
 	}
 
