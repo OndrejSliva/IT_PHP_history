@@ -10,15 +10,9 @@ class Author {
 
 	use UuidTrait;
 
-	/**
-	 * @var string
-	 */
-	private $firstName;
+	private string $firstName;
 
-	/**
-	 * @var string
-	 */
-	private $lastName;
+	private string $lastName;
 
 	public function __construct(
 		string $uuid,

@@ -8,10 +8,7 @@ use Ramsey\Uuid\Uuid;
 
 trait UuidTrait {
 
-	/**
-	 * @var string
-	 */
-	private $uuid;
+	private string $uuid;
 
 	public function getUuid(): string {
 		return $this->uuid;

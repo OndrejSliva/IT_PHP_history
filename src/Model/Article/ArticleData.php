@@ -9,25 +9,13 @@ use VSB\IT\Model\Author\Author;
 
 class ArticleData {
 
-	/**
-	 * @var string
-	 */
-	private $name;
+	private string $name;
 
-	/**
-	 * @var \VSB\IT\Model\Author\Author
-	 */
-	private $author;
+	private Author $author;
 
-	/**
-	 * @var \VSB\IT\Model\Article\State\ArticleStateEnum
-	 */
-	private $state;
+	private ArticleStateEnum $state;
 
-	/**
-	 * @var \DateTimeImmutable|null
-	 */
-	private $publishedAt;
+	private ?\DateTimeImmutable $publishedAt;
 
 	public function __construct(
 		string $name,

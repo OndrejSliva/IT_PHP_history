@@ -14,10 +14,7 @@ class ArticleStateEnum {
 		self::STATE_CREATED
 	];
 
-	/**
-	 * @var int
-	 */
-	private $state;
+	private int $state;
 
 	public function __construct(
 		int $state
