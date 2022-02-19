@@ -29,14 +29,11 @@ class ArticleData {
 	 */
 	private $publishedAt;
 
-	/**
-	 * @param \DateTimeImmutable|null $publishedAt
-	 */
 	public function __construct(
 		string $name,
 		Author $author,
 		ArticleStateEnum $state,
-		$publishedAt
+		?\DateTimeImmutable $publishedAt
 	) {
 		$this->name = $name;
 		$this->author = $author;
@@ -56,10 +53,7 @@ class ArticleData {
 		return $this->state;
 	}
 
-	/**
-	 * @return \DateTimeImmutable|null
-	 */
-	public function getPublishedAt() {
+	public function getPublishedAt(): ?\DateTimeImmutable {
 		return $this->publishedAt;
 	}
 }

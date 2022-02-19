@@ -6,10 +6,10 @@ namespace VSB\IT\Model\Article\State;
 
 class ArticleStateEnum {
 
-	const STATE_PUBLISHED = 1;
-	const STATE_CREATED = 2;
+	public const STATE_PUBLISHED = 1;
+	public const STATE_CREATED = 2;
 
-	const STATES = [
+	private const STATES = [
 		self::STATE_PUBLISHED,
 		self::STATE_CREATED
 	];
