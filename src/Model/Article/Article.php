@@ -1,49 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VSB\IT\Model\Article;
 
-use Ramsey\Uuid\Uuid;
+use VSB\IT\Model\Article\State\ArticleStateEnum;
+use VSB\IT\Model\Author\Author;
+use VSB\IT\Model\UuidTrait;
 
 class Article {
 
-	/**
-	 * @var string
-	 */
-	private $uuid;
+	use UuidTrait;
 
-	/**
-	 * @var string
-	 */
-	private $name;
+	private string $name;
 
-	/**
-	 * @var \VSB\IT\Model\Author\Author
-	 */
-	private $author;
+	private Author $author;
 
-	/**
-	 * @var \VSB\IT\Model\Article\State\ArticleStateEnum
-	 */
-	private $state;
+	private ArticleStateEnum $state;
 
-	/**
-	 * @var \DateTimeImmutable|null
-	 */
-	private $publishedAt;
+	private ?\DateTimeImmutable $publishedAt;
 
-	/**
-	 * @param string $uuid
-	 * @param string $name
-	 * @param \VSB\IT\Model\Author\Author $author
-	 * @param \VSB\IT\Model\Article\State\ArticleStateEnum $state
-	 * @param \DateTimeImmutable|null $publishedAt
-	 */
 	public function __construct(
-		$uuid,
-		$name,
-		$author,
-		$state,
-		$publishedAt
+		string $uuid,
+		string $name,
+		Author $author,
+		ArticleStateEnum $state,
+		?\DateTimeImmutable $publishedAt,
 	) {
 		$this->uuid = $uuid;
 		$this->name = $name;
@@ -52,52 +34,29 @@ class Article {
 		$this->publishedAt = $publishedAt;
 	}
 
-	/**
-	 * @param \VSB\IT\Model\Article\ArticleData $articleData
-	 * @return \VSB\IT\Model\Article\Article
-	 */
-	public static function createFromArticleData($articleData) {
+	public static function createFromArticleData(ArticleData $articleData): self {
 		return new self(
-			Uuid::uuid4()->toString(),
-			$articleData->getName(),
-			$articleData->getAuthor(),
-			$articleData->getState(),
-			$articleData->getPublishedAt()
+			self::generateUuid4(),
+			$articleData->name,
+			$articleData->author,
+			$articleData->state,
+			$articleData->publishedAt
 		);
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getUuid() {
-		return $this->uuid;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName() {
+	public function getName(): string {
 		return $this->name;
 	}
 
-	/**
-	 * @return \VSB\IT\Model\Author\Author
-	 */
-	public function getAuthor() {
+	public function getAuthor(): Author {
 		return $this->author;
 	}
 
-	/**
-	 * @return \VSB\IT\Model\Article\State\ArticleStateEnum
-	 */
-	public function getState() {
+	public function getState(): ArticleStateEnum {
 		return $this->state;
 	}
 
-	/**
-	 * @return \DateTimeImmutable|null
-	 */
-	public function getPublishedAt() {
+	public function getPublishedAt(): ?\DateTimeImmutable {
 		return $this->publishedAt;
 	}
 }

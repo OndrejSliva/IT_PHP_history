@@ -1,72 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VSB\IT\Model\Article;
+
+use VSB\IT\Model\Article\State\ArticleStateEnum;
+use VSB\IT\Model\Author\Author;
 
 class ArticleData {
 
-	/**
-	 * @var string
-	 */
-	private $name;
-
-	/**
-	 * @var string
-	 */
-	private $author;
-
-	/**
-	 * @var string
-	 */
-	private $state;
-
-	/**
-	 * @var \DateTimeImmutable|null
-	 */
-	private $publishedAt;
-
-	/**
-	 * @param string $name
-	 * @param \VSB\IT\Model\Author\Author $author
-	 * @param \VSB\IT\Model\Article\State\ArticleStateEnum $state
-	 * @param \DateTimeImmutable|null $publishedAt
-	 */
 	public function __construct(
-		$name,
-		$author,
-		$state,
-		$publishedAt
+		public readonly string $name,
+		public readonly Author $author,
+		public readonly ArticleStateEnum $state,
+		public readonly ?\DateTimeImmutable $publishedAt,
 	) {
-		$this->name = $name;
-		$this->author = $author;
-		$this->state = $state;
-		$this->publishedAt = $publishedAt;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName() {
-		return $this->name;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getAuthor() {
-		return $this->author;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getState() {
-		return $this->state;
-	}
-
-	/**
-	 * @return \DateTimeImmutable|null
-	 */
-	public function getPublishedAt() {
-		return $this->publishedAt;
 	}
 }

@@ -1,79 +1,46 @@
 <?php
 
+declare(strict_types=1);
+
 namespace VSB\IT\Model\Author;
 
-use Ramsey\Uuid\Uuid;
+use VSB\IT\Model\UuidTrait;
 
 class Author {
 
-	/**
-	 * @var string
-	 */
-	private $uuid;
+	use UuidTrait;
 
-	/**
-	 * @var string
-	 */
-	private $firstName;
+	private string $firstName;
 
-	/**
-	 * @var string
-	 */
-	private $lastName;
+	private string $lastName;
 
-	/**
-	 * @param string $uuid
-	 * @param string $firstName
-	 * @param string $lastName
-	 */
 	public function __construct(
-		$uuid,
-		$firstName,
-		$lastName
+		string $uuid,
+		string $firstName,
+		string $lastName,
 	) {
 		$this->uuid = $uuid;
 		$this->firstName = $firstName;
 		$this->lastName = $lastName;
 	}
 
-	/**
-	 * @param string $firstName
-	 * @param string $lastName
-	 * @return \VSB\IT\Model\Author\Author
-	 */
-	public static function createFromFirstNameAndLastName($firstName, $lastName) {
+	public static function createFromFirstNameAndLastName(string $firstName, string $lastName): self {
 		return new self(
-			Uuid::uuid4()->toString(),
+			self::generateUuid4(),
 			$firstName,
-			$lastName
+			$lastName,
 		);
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getUuid() {
-		return $this->uuid;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getFirstName() {
+	public function getFirstName(): string {
 		return $this->firstName;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getLastName() {
+	public function getLastName(): string {
 		return $this->lastName;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getFullName() {
+	public function getFullName(): string {
 		return sprintf('%s %s', $this->firstName, $this->lastName);
 	}
 }
